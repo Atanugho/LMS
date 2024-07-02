@@ -1,9 +1,16 @@
-import React from 'react'
+
+import React from 'react';
+import App from './App.jsx';
+import './index.css';
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { Browserrouter} from 'react-router-dom';
+import { Toaster} from 'react-hot-toast';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
-    <App />
+    <Browserrouter>
+        <App />
+        <Toaster/>
+    </Browserrouter>
+    
 )
