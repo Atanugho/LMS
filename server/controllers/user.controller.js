@@ -239,7 +239,7 @@ export const changePassword = asyncHandler(async (req, res, next) => {
 
   if (!oldPassword || !newPassword) {
     return next(
-      new AppError('Old password and new password are required', 400)
+      new AppError("Old password and new password are required", 400)
     );
   }
 
@@ -270,7 +270,7 @@ export const changePassword = asyncHandler(async (req, res, next) => {
 export const updateUser = asyncHandler(async (req, res, next) => {
   
   const { fullName } = req.body;
-  const { id } = req.params;
+  const { id } = req.user.id;
 
   const user = await User.findById(id);
 
