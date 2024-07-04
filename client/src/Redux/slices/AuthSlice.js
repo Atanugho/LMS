@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const intialState = {
+const initialState = {
     isLoggedIn: localStorage.getItem('isLoggedIn') || false,
     role : localStorage.getItem('role') || "",
-    data: localStorage.getItem('data') || {}
+    data: localStorage.getItem('data') != undefined ? JSON.parse(localStorage.getItem('data')) : {}
 };
 
 const authSlice = createSlice({
     name:'auth',
-    intialState,
+    initialState,
     reducers: {},
 });
 
