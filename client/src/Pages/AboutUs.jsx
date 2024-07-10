@@ -122,8 +122,6 @@ function AboutUs(){
 
                     </div>
                 </div>
-
-
         </div>
     </HomeLayout>
    ) 
