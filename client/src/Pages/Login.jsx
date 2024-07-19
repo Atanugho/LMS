@@ -28,7 +28,7 @@ function Login(){
 
     async function onLogin(event){
         event.preventDefault();
-        if(!loginData.email || !signupData.password){
+        if(!loginData.email || !loginData.password){
             toast.error("Please fill all the fields");
             return
         }

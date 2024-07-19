@@ -49,7 +49,7 @@ export const registerUser = asyncHandler(async (req, res, next) => {
         folder: 'lms',
         width: 250,
         height: 250,
-        gravity: 'faces', // This option tells cloudinary to center the image around detected faces (if any) after cropping or resizing the original image
+        gravity: 'faces', 
         crop: 'fill',
       });
 
@@ -70,10 +70,8 @@ export const registerUser = asyncHandler(async (req, res, next) => {
   await user.save();
   const token = await user.generateJWTToken();
 
-  // Setting the password to undefined so it does not get sent in the response
   user.password = undefined;
 
-  // Setting the token in the cookie with name token along with cookieOptions
   res.cookie('token', token, cookieOptions);
 
   res.status(201).json({
