@@ -3,27 +3,10 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../Helpers/axiosInstance";
 
 
-// const initialState = {
-//     isLoggedIn: localStorage.getItem('isLoggedIn') || false,
-//     role : localStorage.getItem('role') || "",
-//     data: localStorage.getItem('data') != undefined ? JSON.parse(localStorage.getItem('data')) : {}
-// };
-
 const initialState = {
-    isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
-    role: localStorage.getItem('role') || "",
-    data: (() => {
-        const localStorageData = localStorage.getItem('data');
-        if (localStorageData) {
-            try {
-                return JSON.parse(localStorageData);
-            } catch (error) {
-                console.error('Error parsing JSON from localStorage:', error);
-                return {};
-            }
-        }
-        return {};
-    })()
+    isLoggedIn: localStorage.getItem('isLoggedIn') || false,
+    role : localStorage.getItem('role') || "",
+    data: localStorage.getItem('data') != undefined ? JSON.parse(localStorage.getItem('data')) : {}
 };
 
 
@@ -63,9 +46,9 @@ export const login = createAsyncThunk("/auth/login", async (data) =>{
 
 export const logout = createAsyncThunk("/auth/logout", async () => {
     try {
-        const res = axiosInstance.post("user/logout");
+        const res = axiosInstance.get("user/logout");
         toast.promise(res,{
-            loading: "Wait! logout in progress",
+            loading: "Wait! logout in progress...",
             success: (data) => {
                 return data?.data?.message;
             },
