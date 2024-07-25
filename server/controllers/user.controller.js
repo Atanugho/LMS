@@ -112,9 +112,9 @@ export const loginUser = asyncHandler(async (req, res, next) => {
 });
 
 
-export const logoutUser = asyncHandler(async (req, res,next) => {
+export const logoutUser = asyncHandler(async (_req, res,_next) => {
   res.cookie('token', null, {
-    secure: true,
+    secure: process.env.NODE_ENV === 'production' ? true : false,
     maxAge: 0,
     httpOnly: true,
   });
@@ -268,7 +268,7 @@ export const changePassword = asyncHandler(async (req, res, next) => {
 export const updateUser = asyncHandler(async (req, res, next) => {
   
   const { fullName } = req.body;
-  const { id } = req.user.id;
+  const { id } = req.params;
 
   const user = await User.findById(id);
 

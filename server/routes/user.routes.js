@@ -16,11 +16,11 @@ const router = Router();
 
 router.post('/register',upload.single("avatar"),registerUser);
 router.post('/login',loginUser);
-router.get('/logout',logoutUser);
+router.post('/logout',logoutUser);
 router.get('/me',isLoggedIn,getLoggedInUserDetails);
 router.post('/forgot-password',forgotPassword);
 router.post('/reset/:resetToken',resetPassword);
 router.post('/change-password',isLoggedIn,changePassword);
-router.put('/update',isLoggedIn,upload.single("avatar"),updateUser)
+router.put("/update/:id", isLoggedIn, upload.single("avatar"), updateUser);
 
 export default router;

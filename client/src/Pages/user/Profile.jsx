@@ -1,10 +1,10 @@
 
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
-import { getUserData } from "../../Redux/slices/AuthSlice";
+//import { getUserData } from "../../Redux/slices/AuthSlice";
 
 
 function Profile() {
