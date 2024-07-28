@@ -67,7 +67,7 @@ function Checkout() {
                 className="min-h-[90vh] flex items-center justify-center text-white"
             >
                 <div className="w-80 h-[26rem] flex flex-col justify-center shadow-[0_0_10px_black] rounded-lg relative">
-                    <h1 className="bg-yellow-500 absolute top-0 w-full text-center py-4 text-2xl font-bold rounded-tl0lg rounded-tr-lg">Subscription Bundle</h1>
+                    <h1 className="bg-pink-600 absolute top-0 w-full text-center py-4 text-2xl font-bold rounded-tl0lg rounded-tr-lg">Subscription Bundle</h1>
                     <div className="px-4 space-y-5 text-center">
                         <p className="text-[17px]">
                             This purchase will allow you to access all available course
