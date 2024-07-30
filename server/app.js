@@ -5,6 +5,8 @@ import { config } from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 import errorMiddleware from './middlewares/error.middleware.js';
+import userRoutes from './routes/user.routes.js';
+import courseRoutes from './routes/course.routes.js';
 
 const app = express();
 app.use(express.json());
@@ -24,14 +26,11 @@ app.get('/ping', (_req, res) => {
   res.send('Pong');
 });
 
-// Import all routes
-import userRoutes from './routes/user.routes.js';
-// import courseRoutes from './routes/course.routes.js';
 // import paymentRoutes from './routes/payment.routes.js';
 // import miscRoutes from './routes/miscellaneous.routes.js';
 
 app.use('/api/v1/user', userRoutes);
-// app.use('/api/v1/courses', courseRoutes);
+app.use('/api/v1/courses', courseRoutes);
 // app.use('/api/v1/payments', paymentRoutes);
 // app.use('/api/v1', miscRoutes);
 

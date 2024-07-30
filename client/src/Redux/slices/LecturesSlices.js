@@ -56,7 +56,7 @@ export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", as
  
 
 const lecturesSlices = createSlice({
-    name: lecture,
+    name: "lecture",
     initialState,
     reducers: {},
     extraReducers: (builder) => {

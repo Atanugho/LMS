@@ -21,7 +21,7 @@ export const isLoggedIn = asyncHandler(async (req, _res, next) => {
   next();
 });
 
-export const authorizeRoles = (...roles) =>
+export const authorizedRoles = (...roles) =>
   asyncHandler(async (req, _res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(

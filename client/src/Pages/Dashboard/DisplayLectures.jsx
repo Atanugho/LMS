@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
-import { deleteCourseLecture, getCourseLectures } from "../../Redux/slices/LectureSlice";
+import { deleteCourseLecture, getCourseLectures } from "../../Redux/slices/LecturesSlices";
 
 function Displaylectures() {
 

@@ -1,47 +1,45 @@
-// import upload from "../middlewares/multer.midddleware.js";
-// import { Router } from "express";
-// import {
-//   addLectureToCourseId,
-//   createCourse,
-//   getAllCourses,
-//   getLecturesByCourseId,
-//   removeCourse,
-//   updateCourse,
-// } from "../controllers/course.controller.js";
-// import { authorizedRoles, isLoggedIn,authorizedSubscriber } from "../middlewares/auth.middleware.js";
+import upload from "../middlewares/multer.midddleware.js";
+import { Router } from "express";
+import {
+  getAllCourses,
+  getLecturesByCourseId,
+  createCourse,
+  updateCourse,
+  removeCourse,
+  addLectureToCourseId
 
-// const router = Router();
+} from "../controllers/course.controller.js";
+import { authorizedRoles, isLoggedIn } from "../middlewares/auth.middleware.js";
 
-// router.route('/') 
-//     .get(getAllCourses)
-//     .post(
-//       isLoggedIn,
-//       authorizedRoles('ADMIN'),
-//       upload.single('thumbnail'),
-//       createCourse
-//     );
+const router = Router();
 
-// router.route("/:id")
-//       .get(
-//         isLoggedIn,
-//         authorizedSubscriber,
-//         getLecturesByCourseId
-//       )
-//       .put(
-//         isLoggedIn,
-//         authorizedRoles('ADMIN'),
-//         updateCourse, 
-//       )
-//       .delete(
-//         isLoggedIn,
-//         authorizedRoles('ADMIN'),
-//         removeCourse
-//       )
-//       .post(
-//         isLoggedIn,
-//         authorizedRoles('ADMIN'),
-//         upload.single('lecture'),
-//         addLectureToCourseId
-//       );
+router.route('/')
+    .get(getAllCourses)
+    .post(
+      isLoggedIn,
+      authorizedRoles("ADMIN"),
+      upload.single('thumbnail'),
+      createCourse
+    )
+    
 
-// export default router;
+router.route("/:id")
+    .get(isLoggedIn,getLecturesByCourseId)
+    .put(
+      isLoggedIn,
+      authorizedRoles("ADMIN"),
+      updateCourse
+    )
+    .delete(
+      isLoggedIn,
+      authorizedRoles("ADMIN"),
+      removeCourse
+    )
+    .post(
+      isLoggedIn,
+      authorizedRoles("ADMIN"),
+      upload.single('lecture'),
+      addLectureToCourseId
+    );
+      
+export default router;
