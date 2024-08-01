@@ -42,13 +42,13 @@ function Profile() {
                     <div className="flex items-center justify-between gap-2">
                         <Link 
                             to="/changepassword" 
-                            className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
+                            className="w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
                                 <button>Change password</button>
 
                         </Link>
                         <Link 
                             to="/user/editprofile" 
-                            className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
+                            className="w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
                                 <button>Edit profile</button>
 
                         </Link>

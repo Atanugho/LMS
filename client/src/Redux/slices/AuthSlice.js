@@ -25,7 +25,7 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) =>{
     } catch (error) {
         toast.error(error?.response?.data?.message)
     }
-})
+});
 
 export const login = createAsyncThunk("/auth/login", async (data) =>{
     try {
@@ -42,7 +42,7 @@ export const login = createAsyncThunk("/auth/login", async (data) =>{
     } catch (error) {
         toast.error(error?.response?.data?.message)
     }
-})
+});
 
 export const logout = createAsyncThunk("/auth/logout", async () => {
     try {
@@ -75,7 +75,7 @@ export const updateProfile = createAsyncThunk("/user/update/profile", async (dat
     } catch (error) {
         toast.error(error?.response?.data?.message)
     }
-})
+});
 
 export const getUserData = createAsyncThunk("/user/details", async () => {
     try {
@@ -84,9 +84,73 @@ export const getUserData = createAsyncThunk("/user/details", async () => {
     } catch (error) {
         toast.error(error.message)
     }
-})
+});
 
+export const changePassword = createAsyncThunk(
+    "/auth/changePassword",
+    async (userPassword) => {
+      try {
+        let res = axiosInstance.post("/user/change-password", userPassword);
+  
+        await toast.promise(res, {
+          loading: "Loading...",
+          success: (data) => {
+            return data?.data?.message;
+          },
+          error: "Failed to change password",
+        });
 
+        res = await res;
+        return res.data;
+      } catch (error) {
+        toast.error(error?.response?.data?.message);
+      }
+    }
+  );
+
+export const forgetPassword = createAsyncThunk(
+"auth/forgetPassword",
+async (email) => {
+    try {
+    let res = axiosInstance.post("/user/forgot-password", { email });
+
+    await toast.promise(res, {
+        loading: "Loading...",
+        success: (data) => {
+        return data?.data?.message;
+        },
+        error: "Failed to send verification email",
+    });
+
+    // getting response resolved here
+    res = await res;
+    return res.data;
+    } catch (error) {
+    toast.error(error?.response?.data?.message);
+    }
+}
+);
+
+export const resetPassword = createAsyncThunk("/user/reset", async (data) => {
+try {
+    let res = axiosInstance.post(`/user/reset/${data.resetToken}`, {
+    password: data.password,
+    });
+
+    toast.promise(res, {
+    loading: "Resetting...",
+    success: (data) => {
+        return data?.data?.message;
+    },
+    error: "Failed to reset password",
+    });
+    // getting response resolved here
+    res = await res;
+    return res.data;
+} catch (error) {
+    toast.error(error?.response?.data?.message);
+}
+});
 
 
 
